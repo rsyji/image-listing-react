@@ -15,3 +15,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.btn {
+  @apply font-bold rounded-2xl py-1 px-4 my-2
+}
+
+
+.btn-blue{
+  @apply bg-yellow-400 text-white
+}
+
+.btn-blue:hover{
+  @apply bg-yellow-500
+}
