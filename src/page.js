@@ -1,5 +1,7 @@
 import React,{useState} from 'react'
 import ImagesData from './imagesData'
+import Tiles from './components/Tiles'
+// import CardsTiles from './components/CardsTiles'
 
 const Page = () => {
   const [items, setItems]=useState(ImagesData)
@@ -23,7 +25,11 @@ const Page = () => {
         </ul>
       </nav>
       <div className='grid grid-cols-3 md:grid-cols-3 sm:grid-cols-1 gap-4 mx-4'>
-       {
+        {
+          items.map(item=> <Tiles id={item.id} url={item.url} albumId={item.albumId} title={item.title}/>)
+        }
+       {/* {
+
         items.map(ele=>{
           const {albumId,id,title,url}=ele
           return(
@@ -39,7 +45,7 @@ const Page = () => {
           </div>
           )
         })
-       }
+       } */}
 
 
       </div>
