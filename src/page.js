@@ -5,6 +5,7 @@ import Buttons from './components/Buttons'
 // import CardsTiles from './components/CardsTiles'
 
 const Page = () => {
+
   const [items, setItems]=useState(ImagesData)
   const handleClick = (galleryId)=>{
     const filteredItems= ImagesData.filter(item=>{
@@ -19,13 +20,18 @@ const Page = () => {
   }
 
   const uniqueItems = [...new Set(ImagesData.map(item=>item.albumId)),'All']
+
+  const buttonsList = uniqueItems.map(data=> <li key={data} className='mx-4'> <Buttons onClick={()=>handleClick(data)} text={data}/></li>)
+
+  const cardsList = items.map(item=> <Tiles id={item.id} url={item.url} albumId={item.albumId} title={item.title}/>)
+  
   return (
     <>
       <h1 className='text-3xl font-bold mt-8 mb-2'>Images Gallery</h1>
       <hr/>
       <nav>
         <ul className='grid grid-cols-5 md:grid-cols-5 sm:grid-cols-3'>
-          {uniqueItems.map(data=> <li key={data} className='mx-4'> <Buttons onClick={()=>handleClick(data)} text={data}/></li>)}
+          {buttonsList}
           {/* <li className='mx-4'><button className='btn btn-blue' onClick={()=>handleClick(1)}>Gallery 1</button></li>
           <li className='mx-4'><button className='btn btn-blue' onClick={()=>handleClick(2)}>Gallery 2</button></li>
           <li className='mx-4'><button className='btn btn-blue' onClick={()=>handleClick(3)}>Gallery 3</button></li>
@@ -35,7 +41,7 @@ const Page = () => {
       </nav>
       <div className='grid grid-cols-3 md:grid-cols-3 sm:grid-cols-1 gap-4 mx-4'>
         {
-          items.map(item=> <Tiles id={item.id} url={item.url} albumId={item.albumId} title={item.title}/>)
+          cardsList
         }
        {/* {
 
